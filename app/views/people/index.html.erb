@@ -6,11 +6,11 @@
 		People 
 		<%= select_tag("emailNeg",  options_for_select([['using', false], ['not using', true]], {:selected=>params[:emailNeg]}) )%>
 		email provider 
-		<%= text_field_tag 'email', @list_options[:email] %> AND <br/>
+		<%= text_field_tag 'email', params[:email] %> AND <br/>
 		People 
 		<%= select_tag("postcodeNeg",  options_for_select([['registered', false], ['not registered', true]], {:selected=>params[:postcodeNeg]}))%>
 		in postcode(s)
-		<%= text_field_tag ("postcode", @list_options[:postcode]) %> (comma separated)
+		<%= text_field_tag "postcode", params[:postcode] %> (comma separated)
 		<br/>
 		<%= link_to "Clear Form" %>
 		<%= submit_tag "Search", :name => nil %>
