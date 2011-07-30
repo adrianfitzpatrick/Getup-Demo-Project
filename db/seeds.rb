@@ -6,13 +6,14 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-require 'fastercsv'
+require 'csv'
 print "loading #{RAILS_ROOT}/db/csv/postcodes.csv\n"
-FasterCSV.foreach("#{RAILS_ROOT}/db/csv/postcodes.csv" , :headers=>true) do |row|
+CSV.foreach("#{RAILS_ROOT}/db/csv/postcodes.csv" , :headers=>true) do |row|
+  #print row.inspect
   Postcode.create(:id => row['id'], :number => row['number'], :suburb => row['suburb'])
 end
 
 print "loading #{RAILS_ROOT}/db/csv/people.csv\n"
-FasterCSV.foreach("#{RAILS_ROOT}/db/csv/people.csv" , :headers=>true) do |row|
-  Person.create(:id => row['id'], :name => row['name'], :postcode_id => row['postcode_id'], :email => row['email'])
+CSV.foreach("#{RAILS_ROOT}/db/csv/people.csv" , :headers=>true) do |row|
+  Person.create(:id => row['id'], :name => row['name'], :postcode_id => row['postcode_id'].to_i, :email => row['email'])
 end
