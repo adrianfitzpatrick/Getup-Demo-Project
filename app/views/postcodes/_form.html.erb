@@ -1,0 +1,29 @@
+<%= form_for(@postcode) do |f| %>
+  <% if @postcode.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@postcode.errors.count, "error") %> prohibited this postcode from being saved:</h2>
+
+      <ul>
+      <% @postcode.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :suburb %><br />
+    <%= f.text_field :suburb %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

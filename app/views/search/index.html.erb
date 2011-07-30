@@ -1,0 +1,29 @@
+<h1>PeopleFinder</h1>
+<h2>I want:</h2>
+
+<%= form_tag(search_path, :method => "get") do %>
+<p>People who 
+	<% select_tag(:postcodeRule.negation, options_for_select([['are', false], 'are not', true]))%>
+	from postcode(s)
+	<% @postcodeRule.operands.each do |postcode| %>
+		<%text_tag(:postcode)%> 
+		<%link_to 'X'%>
+	<%end%>
+	<%submit_tag("Add Postcode")%>
+</p>
+
+<p>People who 
+	<% select_tag(:emailRule.negation, options_for_select([['do', false], 'do not', true]))%>
+	use email provider
+	<% @emailRule.operands.each do |email| %>
+		<%text_tag(:email)%> 
+		<%link_to 'X'%>
+	<%end%>
+	<%submit_tag("Add Email Provider")%>
+</p>
+<%submit_tag("Show Results")%>
+<%end%>
+
+<% for @SearchResults.each do |person| %>
+	<% person.name%>
+<%end%>
