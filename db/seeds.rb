@@ -15,5 +15,5 @@ end
 
 print "loading #{RAILS_ROOT}/db/csv/people.csv\n"
 CSV.foreach("#{RAILS_ROOT}/db/csv/people.csv" , :headers=>true) do |row|
-  Person.create(:id => row['id'], :name => row['name'], :postcode_id => row['postcode_id'].to_i, :email => row['email'])
+  Person.create(:id => row['id'], :name => row['name'], :postcode_id => row['postcode_id'], :email => row['email'])
 end
